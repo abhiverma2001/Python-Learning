@@ -10,7 +10,7 @@ if age > 30:
     print(age)
 print(age)
 # Single line comment
-print("Hello World"
+print("Hello World")
  ##Line Continuation in Python
 total = 1 + 2 + 3 + 4 + 5 + 6 + 7 + \
     8 + 9 + 10
@@ -26,15 +26,3 @@ variable = 10
 print(type(variable))
 variable = "Chris"
 print(type(variable))
-##Indentation Errors and Name Errors
-age = 32
-if age > 30:
-print(age)  # IndentationError
-a = b  # NameError: name 'b' is not defined
-##Nested Indentation
-if True:
-    print("This is my correct indentation")
-    if False:
-        print("This will not print")
-    print("This will print")
-print("Outside the if block")
