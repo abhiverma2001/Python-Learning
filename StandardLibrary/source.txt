@@ -1,0 +1,3 @@
+Hello how are you?
+Welcome to Python programming paradigm
+My name is Abhishek Chaudhary
