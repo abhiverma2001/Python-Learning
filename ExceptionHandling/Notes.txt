@@ -1,0 +1,177 @@
+Exception Handling Notes in Python
+====================================
+Understanding Exceptions vs Errors:--
+--------------------------------------
+Exceptions are events that disrupt the normal flow of a program. They occur when
+ an error is encountered during program execution. Common exceptions include
+ ZeroDivisionError, FileNotFoundError, ValueError, and TypeError. For example,
+ if you try to divide by zero or access a variable that has not been defined, an
+ exception will be raised.
+
+Example: NameError Exception:
+-----------------------------------
+Let us consider an example where a variable is not defined.
+
+python Code Sample
+a = 10
+python Code Sample
+e = b
+The above code will raise a NameError because b is not defined. This is a type of
+ exception.
+
+Handling Exceptions with try and except:-
+--------------------------------------------
+To handle exceptions gracefully, we use the try and except blocks. The try block
+contains code where an exception may arise. If an exception occurs, it is caught
+ by the except block, where you can provide a custom message.
+
+python Code Sample
+try:
+    a = b
+except:
+    print("The variable has not been assigned.")
+You can also catch specific exceptions and display the error message.
+
+python Code Sample
+try:
+    a = b
+except NameError as x:
+    print(x)
+
+Handling ZeroDivisionError:
+----------------------------
+Another common exception is ZeroDivisionError, which occurs when dividing by zero.
+
+python Code Sample
+result = 1 / 0
+To handle this exception:
+
+python Code Sample
+try:
+    result = 1 / 0
+except ZeroDivisionError as x:
+    print(x)
+    print("Please enter the denominator greater than zero.")
+
+The Exception Base Class:-
+---------------------------
+All exceptions such as ZeroDivisionError, NameError, ValueError, and TypeError are
+ derived from the main Exception class. If you are unsure about the specific
+  exception, you can use the Exception class to catch any exception.
+
+python Code Sample
+try:
+    a = b
+except Exception as x1:
+    print(x1)
+
+Handling Multiple Exceptions:-
+----------------------------------
+You can handle multiple exceptions by using multiple except blocks. For example,
+when taking user input and performing division, you may encounter ValueError or
+ZeroDivisionError.
+
+python Code Sample
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("Not a valid number.")
+except ZeroDivisionError:
+    print("Enter denominator greater than zero.")
+except Exception as x:
+    print(x)
+
+Using else Block with try and except:
+-------------------------------------
+The else block is executed if no exception occurs in the try block. This allows you
+ to separate the code that should run only if the try block succeeds.
+
+python Code Sample
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("Not a valid number.")
+except ZeroDivisionError:
+    print("You can't divide the number by zero.")
+except Exception as x:
+    print(x)
+else:
+    print(f"The result is {result}")
+
+Using finally Block:
+------------------------
+The finally block is executed no matter what, whether an exception occurs or not.
+This is useful for cleanup actions such as closing files or database connections.
+
+python Code Sample
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("Not a valid number.")
+except ZeroDivisionError:
+    print("You can't divide the number by zero.")
+except Exception as x:
+    print(x)
+else:
+    print(f"The result is {result}")
+finally:
+    print("Execution complete.")
+
+Practical Example: File Handling with Exception Handling:
+------------------------------------------------------------
+Let us see how exception handling is used with file operations. If a file does not
+exist, a FileNotFoundError will be raised. We can handle this and ensure the
+file is closed properly using finally.
+
+python Code Sample
+try:
+    file = open("example1.txt", "r")
+    content = file.read()
+    print(content)
+except FileNotFoundError:
+    print("The file does not exist.")
+finally:
+    if 'file' in locals() and not file.closed:
+        file.close()
+        print("File closed.")
+If another error occurs while reading the file, you can handle it with the
+Exception class.
+
+python Code Sample
+try:
+    file = open("example1.txt", "r")
+    a = b  # This will raise NameError
+except FileNotFoundError:
+    print("The file does not exist.")
+except Exception as x:
+    print(x)
+finally:
+    if 'file' in locals() and not file.closed:
+        file.close()
+        print("File closed.")
+
+Conclusion:-
+Exception handling in Python allows you to manage errors gracefully and ensure
+that your program does not terminate unexpectedly. By using try, except, else,
+and finally blocks, you can handle different types of exceptions, provide
+meaningful messages to users, and perform necessary cleanup actions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
